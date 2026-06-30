@@ -1,0 +1,224 @@
+/* ===========================
+   Navigation Buttons
+=========================== */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: block;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: #363b43;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #dbeafe;
+}
+
+.nav-btn.active {
+  background: #bfdbfe;
+}
+
+.nav-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #363b43;
+}
+
+.nav-btn.active .nav-label {
+  font-weight: 700;
+}
+
+
+
+/* ===========================
+   Mobile Top Header
+=========================== */
+
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: #f1f4f9;
+  border-bottom: 1px solid #d0d8e8;
+  z-index: 1100;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.menu-toggle-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #1d1d1f;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-header-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #1d4ed8;
+  letter-spacing: -0.3px;
+  flex: 1;
+  margin-left: -350px;
+}
+
+.mobile-header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d4ed8, #60a5fa);
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width: 1024px) {
+
+  .sidebar{
+    width:72px !important;
+    min-width:72px !important;
+  }
+
+  .brand-title,
+  .brand-subtitle,
+  .nav-label,
+  .new-btn-text,
+  .user-info{
+    display:none;
+  }
+
+  .nav-btn{
+    justify-content:center;
+  }
+
+  .new-btn{
+    justify-content:center;
+    padding:9px;
+  }
+
+  .user-row{
+    justify-content:center;
+  }
+
+}
+
+/* ===========================
+   Mobile — bottom tab bar (matches screenshot)
+=========================== */
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: none; /* no hamburger on mobile, it's a bottom bar now */
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 64px !important;
+
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 6px 0 !important;
+    border-right: none;
+    border-top: 1px solid #d0d8e8;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
+
+    z-index: 1000;
+  }
+ .mobile-header {
+    display: flex;
+  }
+
+  body {
+    padding-top: 56px; /* keep page content clear of the fixed header */
+  }
+  /* hide everything except the nav row */
+  .sidebar > div:first-child,
+  .new-btn,
+  .user-row {
+    display: none !important;
+  }
+
+  nav {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .nav-btn {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: auto;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .nav-btn.active {
+    background: transparent;
+  }
+
+  .nav-btn.active span:first-child {
+    color: #1d4ed8;
+  }
+
+  .nav-label {
+    display: block !important;
+    font-size: 10.5px;
+  }
+
+  .nav-btn.active .nav-label {
+    color: #1d4ed8;
+  }
+}

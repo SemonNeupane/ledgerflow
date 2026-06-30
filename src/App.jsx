@@ -1,5 +1,5 @@
 import Sidebar from "./pages/Sidebar";
-
+import "./App.css";
 export default function Dashboard() {
   return (
     <div style={styles.app}>
@@ -8,7 +8,7 @@ export default function Dashboard() {
       {/* Main content */}
       <div style={styles.main}>
         {/* Top bar */}
-        <header style={styles.topBar}>
+        <header className="top-bar" style={styles.topBar}>
           <div style={styles.topLeft}>
             <span style={styles.pageTitle}>Overview</span>
             <div style={styles.searchBox}>
