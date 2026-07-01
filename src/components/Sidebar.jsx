@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
 import {
@@ -14,28 +15,33 @@ import {
 const navItems = [
   {
     label: "Dashboard",
+    path: "/",
     icon: <LayoutDashboard size={18} strokeWidth={2} />,
   },
   {
     label: "Transactions",
+    path: "/transactions",
     icon: <ScrollText size={18} strokeWidth={2} />,
   },
   {
     label: "Customers",
+    path: "/customers",
     icon: <Users size={18} strokeWidth={2} />,
   },
   {
     label: "Reports",
+    path: "/reports",
     icon: <ChartColumn size={18} strokeWidth={2} />,
   },
   {
     label: "Ledger",
+    path: "/ledger",
     icon: <Landmark size={18} strokeWidth={2} />,
   },
 ];
 
 export default function Sidebar({ activeItem = "Transactions" }) {
-  const [active, setActive] = useState(activeItem);
+  // const [active, setActive] = useState(activeItem);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -112,13 +118,15 @@ export default function Sidebar({ activeItem = "Transactions" }) {
           }}
         >
           {navItems.map((item) => (
-            <button
-              key={item.label}
-              className={`nav-btn ${
-                active === item.label ? "active" : ""
-              }`}
-              onClick={() => setActive(item.label)}
-            >
+            <NavLink
+  key={item.label}
+  to={item.path}
+  className={({ isActive }) =>
+    `nav-btn ${isActive ? "active" : ""}`
+  }
+  onClick={() => setMenuOpen(false)}
+  style={{ textDecoration: "none" }}
+>
               <span
                 style={{
                   display: "flex",
@@ -132,7 +140,7 @@ export default function Sidebar({ activeItem = "Transactions" }) {
               <span className="nav-label">
                 {item.label}
               </span>
-            </button>
+            </NavLink>
           ))}
         </nav>
                 {/* Bottom */}

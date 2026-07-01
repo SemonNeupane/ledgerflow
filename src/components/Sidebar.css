@@ -110,7 +110,7 @@ body {
    Tablet
 =========================== */
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
 
   .sidebar{
     width:72px !important;
@@ -138,7 +138,7 @@ body {
     justify-content:center;
   }
 
-}
+} */
 
 /* ===========================
    Mobile — bottom tab bar (matches screenshot)
@@ -210,7 +210,7 @@ body {
   }
 
   .nav-btn.active span:first-child {
-    color: #1d4ed8;
+    color: #363b43;
   }
 
   .nav-label {
@@ -219,6 +219,6 @@ body {
   }
 
   .nav-btn.active .nav-label {
-    color: #1d4ed8;
+    color:#363b43;
   }
 }
