@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import "../App.css";
 import {
@@ -19,6 +20,37 @@ export default function Transactions() {
   const [customer, setCustomer] = useState("");
   const [date, setDate] = useState("");
   const [notes, setNotes] = useState("");
+  const handleSaveTransaction = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost/ledgerflow/backend/transactions/create.php",
+      {
+        customer_id: customer,          
+        transaction_type: direction,
+        amount: amount,
+        transaction_date: date,
+        notes: notes,
+      }
+    );
+
+    if (response.data.status) {
+      alert(response.data.message);
+
+      
+      setAmount("0.00");
+      setCustomer("");
+      setDate("");
+      setNotes("");
+      setDirection("received");
+    } else {
+      alert(response.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Unable to connect to server.");
+  }
+};
+
 
   return (
     <div style={styles.app}>
@@ -160,12 +192,11 @@ export default function Transactions() {
                     <div style={styles.inputWithIcon}>
                       <Calendar size={14} color="#94a3b8" />
                       <input
-                        type="text"
-                        placeholder="dd-----yyyy"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        style={styles.plainInput}
-                      />
+    type="date"
+    value={date}
+    onChange={(e) => setDate(e.target.value)}
+    style={styles.plainInput}
+/>
                     </div>
                   </div>
                 </div>
@@ -185,7 +216,7 @@ export default function Transactions() {
                 <button type="button" style={styles.cancelBtn}>
                   Cancel
                 </button>
-                <button type="button" style={styles.saveBtn}>
+                <button type="button" style={styles.saveBtn} onClick={handleSaveTransaction}>
                   <CheckCircle2 size={16} strokeWidth={2.2} />
                   Save Transaction
                 </button>
